@@ -95,14 +95,36 @@ const Index = () => {
           ))}
         </div>
 
-        <a
-          href={offerLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full rounded-2xl bg-primary py-4 text-center text-base font-bold uppercase tracking-wide text-primary-foreground shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
-        >
-          Apply Now
-        </a>
+        {region === null ? (
+          <div className="w-full">
+            <p className="mb-3 text-center text-sm font-bold uppercase tracking-widest text-foreground">
+              Choose Your Region To Continue
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => setRegion("US")}
+                className="flex items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card py-4 text-base font-bold text-foreground shadow-sm transition-all hover:border-primary hover:bg-primary/5 active:scale-[0.98]"
+              >
+                <span className="text-xl">🇺🇸</span> United States
+              </button>
+              <button
+                onClick={() => setRegion("UK")}
+                className="flex items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card py-4 text-base font-bold text-foreground shadow-sm transition-all hover:border-primary hover:bg-primary/5 active:scale-[0.98]"
+              >
+                <span className="text-xl">🇬🇧</span> United Kingdom
+              </button>
+            </div>
+          </div>
+        ) : (
+          <a
+            href={offerLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full rounded-2xl bg-primary py-4 text-center text-base font-bold uppercase tracking-wide text-primary-foreground shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
+          >
+            Apply Now ({region})
+          </a>
+        )}
 
         {/* FAQ Section */}
         <div className="mt-10 w-full animate-fade-in" style={{ animationDelay: "300ms" }}>
