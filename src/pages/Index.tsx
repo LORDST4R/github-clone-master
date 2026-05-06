@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import foodBg from "@/assets/food-bg.jpg";
 import justeatLogo from "@/assets/justeat-logo.png";
 import StepCard from "@/components/StepCard";
@@ -9,7 +9,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const OFFER_LINK = "https://trksy.org/aff_c?offer_id=4101&aff_id=28933";
+const OFFER_LINK_US = "https://linkthem.net/aff_c?offer_id=4104&aff_id=28933";
+const OFFER_LINK_UK = "https://linkthem.net/aff_c?offer_id=4133&aff_id=28933";
+const OFFER_LINK_DEFAULT = OFFER_LINK_US;
 
 const steps = [
   { number: 1, text: "Go Through A Quick Questionnaire" },
@@ -33,6 +35,32 @@ const faqs = [
 ];
 
 const Index = () => {
+  const [offerLink, setOfferLink] = useState<string>(OFFER_LINK_DEFAULT);
+
+  useEffect(() => {
+    let cancelled = false;
+    const pickLink = (country: string | undefined) => {
+      const c = (country || "").toUpperCase();
+      if (c === "GB" || c === "UK") return OFFER_LINK_UK;
+      return OFFER_LINK_US;
+    };
+    fetch("https://ipapi.co/json/")
+      .then((r) => r.json())
+      .then((data) => {
+        if (cancelled) return;
+        setOfferLink(pickLink(data?.country_code || data?.country));
+      })
+      .catch(() => {
+        // Fallback: use browser locale
+        const lang = navigator.language || "";
+        if (/-GB\b/i.test(lang)) setOfferLink(OFFER_LINK_UK);
+        else setOfferLink(OFFER_LINK_US);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const [approvedCount] = useState(() => {
     const baseCount = 500;
     const launchDate = new Date("2026-03-01").getTime();
@@ -91,7 +119,7 @@ const Index = () => {
         </div>
 
         <a
-          href={OFFER_LINK}
+          href={offerLink}
           target="_blank"
           rel="noopener noreferrer"
           className="block w-full rounded-2xl bg-primary py-4 text-center text-base font-bold uppercase tracking-wide text-primary-foreground shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
