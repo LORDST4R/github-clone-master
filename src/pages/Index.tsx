@@ -35,31 +35,8 @@ const faqs = [
 ];
 
 const Index = () => {
-  const [offerLink, setOfferLink] = useState<string>(OFFER_LINK_DEFAULT);
-
-  useEffect(() => {
-    let cancelled = false;
-    const pickLink = (country: string | undefined) => {
-      const c = (country || "").toUpperCase();
-      if (c === "GB" || c === "UK") return OFFER_LINK_UK;
-      return OFFER_LINK_US;
-    };
-    fetch("https://ipapi.co/json/")
-      .then((r) => r.json())
-      .then((data) => {
-        if (cancelled) return;
-        setOfferLink(pickLink(data?.country_code || data?.country));
-      })
-      .catch(() => {
-        // Fallback: use browser locale
-        const lang = navigator.language || "";
-        if (/-GB\b/i.test(lang)) setOfferLink(OFFER_LINK_UK);
-        else setOfferLink(OFFER_LINK_US);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const [region, setRegion] = useState<"US" | "UK" | null>(null);
+  const offerLink = region === "UK" ? OFFER_LINK_UK : OFFER_LINK_US;
 
   const [approvedCount] = useState(() => {
     const baseCount = 500;
