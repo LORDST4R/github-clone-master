@@ -1,3 +1,4 @@
+import { useState } from "react";
 import foodBg from "@/assets/food-bg.jpg";
 import justeatLogo from "@/assets/justeat-logo.png";
 import StepCard from "@/components/StepCard";
