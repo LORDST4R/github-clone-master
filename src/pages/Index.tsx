@@ -33,9 +33,6 @@ const faqs = [
 ];
 
 const Index = () => {
-  const [region, setRegion] = useState<"US" | "UK" | null>(null);
-  const offerLink = region === "UK" ? OFFER_LINK_UK : OFFER_LINK_US;
-
   const [approvedCount] = useState(() => {
     const baseCount = 500;
     const launchDate = new Date("2026-03-01").getTime();
