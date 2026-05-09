@@ -1,4 +1,3 @@
-import { useState } from "react";
 import foodBg from "@/assets/food-bg.jpg";
 import justeatLogo from "@/assets/justeat-logo.png";
 import StepCard from "@/components/StepCard";
@@ -9,9 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const OFFER_LINK_US = "https://linkthem.net/aff_c?offer_id=4104&aff_id=28933";
-const OFFER_LINK_UK = "https://linkthem.net/aff_c?offer_id=4133&aff_id=28933";
-const OFFER_LINK_DEFAULT = OFFER_LINK_US;
+const OFFER_LINK = "https://linkthem.net/aff_c?offer_id=4104&aff_id=28933";
 
 const steps = [
   { number: 1, text: "Go Through A Quick Questionnaire" },
