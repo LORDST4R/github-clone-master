@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const OFFER_LINK = "https://linkthem.net/aff_c?offer_id=3329&aff_id=28933";
+const OFFER_LINK = "https://trksy.org/aff_c?offer_id=2914&aff_id=28933";
 
 const steps = [
   { number: 1, text: "Go Through A Quick Questionnaire" },
