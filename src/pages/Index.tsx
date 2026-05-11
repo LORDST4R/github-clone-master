@@ -60,7 +60,7 @@ const Index = () => {
       {/* Content */}
       <main className="mx-auto flex w-full max-w-lg flex-col items-center px-5 py-8 animate-slide-up">
         <h1 className="mb-1.5 text-center text-2xl sm:text-3xl font-extrabold leading-tight text-foreground">
-          Claim Your Ticketmaster{"\n"}Student Reward
+          Claim Your TJ Maxx{"\n"}Student Reward
         </h1>
         <p className="mb-4 text-center text-sm text-muted-foreground">
           Available in US, UK, AU & CA
@@ -121,11 +121,11 @@ const Index = () => {
         {/* Footer */}
         <div className="mt-8 flex flex-col items-center gap-2">
           <div className="flex items-center gap-2">
-            <img src={justeatLogo} alt="Ticketmaster" className="h-7 w-7 rounded-md" />
-            <span className="text-base font-bold text-muted-foreground">Ticketmaster</span>
+            <img src={justeatLogo} alt="TJ Maxx" className="h-7 w-7 rounded-md" />
+            <span className="text-base font-bold text-muted-foreground">TJ Maxx</span>
           </div>
           <p className="text-xs text-muted-foreground">
-            Powered by Ticketmaster
+            Powered by TJ Maxx
           </p>
         </div>
       </main>
