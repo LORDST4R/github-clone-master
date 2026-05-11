@@ -32,6 +32,12 @@
     --input: 30 10% 88%;
     --ring: 214 95% 50%;
 
+    --brand: 0 85% 45%;
+    --brand-foreground: 0 0% 100%;
+    --accent-yellow: 48 100% 60%;
+    --card-dark: 0 0% 13%;
+    --card-dark-foreground: 0 0% 98%;
+
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
