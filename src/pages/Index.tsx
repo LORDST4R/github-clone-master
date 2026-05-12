@@ -52,8 +52,7 @@ const Index = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background" />
         <div className="absolute left-4 top-4 flex items-center gap-2.5">
-          <img src={justeatLogo} alt="TJ Maxx" className="h-9 w-9 rounded-lg" />
-          <span className="text-lg font-bold text-primary-foreground tracking-wide">TJ Maxx</span>
+          <img src={justeatLogo} alt="TJ Maxx" className="h-10 w-auto bg-white rounded-md p-1" />
         </div>
       </div>
 
