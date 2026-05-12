@@ -1,6 +1,6 @@
 import { useState } from "react";
 import foodBg from "@/assets/food-bg.jpg";
-import justeatLogo from "@/assets/justeat-logo.png";
+import justeatLogo from "@/assets/tjmaxx-logo.png";
 import StepCard from "@/components/StepCard";
 import {
   Accordion,
@@ -52,8 +52,7 @@ const Index = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background" />
         <div className="absolute left-4 top-4 flex items-center gap-2.5">
-          <img src={justeatLogo} alt="TJ Maxx" className="h-9 w-9 rounded-lg" />
-          <span className="text-lg font-bold text-primary-foreground tracking-wide">TJ Maxx</span>
+          <img src={justeatLogo} alt="TJ Maxx" className="h-10 w-auto bg-white rounded-md p-1" />
         </div>
       </div>
 
@@ -120,10 +119,7 @@ const Index = () => {
 
         {/* Footer */}
         <div className="mt-8 flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2">
-            <img src={justeatLogo} alt="TJ Maxx" className="h-7 w-7 rounded-md" />
-            <span className="text-base font-bold text-muted-foreground">TJ Maxx</span>
-          </div>
+          <img src={justeatLogo} alt="TJ Maxx" className="h-8 w-auto" />
           <p className="text-xs text-muted-foreground">
             Powered by TJ Maxx
           </p>
