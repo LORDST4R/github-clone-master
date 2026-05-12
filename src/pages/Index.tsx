@@ -1,102 +1,133 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import foodBg from "@/assets/food-bg.jpg";
+import justeatLogo from "@/assets/justeat-logo.png";
+import StepCard from "@/components/StepCard";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const OFFER_LINK = "https://linkthem.net/aff_c?offer_id=3329&aff_id=28933";
 
-const deals = [
-  { emoji: "👟", title: "Designer Sneakers", was: "$189", now: "$74.99", off: "-60%" },
-  { emoji: "👜", title: "Luxury Handbags", was: "$320", now: "$129.99", off: "-59%" },
-  { emoji: "🧴", title: "Beauty & Skincare", was: "$95", now: "$39.99", off: "-58%" },
+const steps = [
+  { number: 1, text: "Go Through A Quick Questionnaire" },
+  { number: 2, text: "Complete 4-5 Quick Tasks (Guided)" },
+  { number: 3, text: "We'll Go Through Your Application And Email You Within 24hrs" },
+];
+
+const faqs = [
+  {
+    question: "Do I need to provide bank details?",
+    answer: "No. We will never ask for your bank or credit card details. This program is completely free to join.",
+  },
+  {
+    question: "How long do the deals take?",
+    answer: "Most deals take around 10–15 minutes. The more deals you complete, the more you earn.",
+  },
+  {
+    question: "What kind of deals are included?",
+    answer: "Free trials, app installs, surveys, and deals.",
+  },
 ];
 
 const Index = () => {
-  const [browsing, setBrowsing] = useState(847);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setBrowsing((n) => Math.max(780, Math.min(990, n + (Math.random() > 0.5 ? 1 : -1) * (1 + Math.floor(Math.random() * 3)))));
-    }, 3500);
-    return () => clearInterval(id);
-  }, []);
+  const [approvedCount] = useState(() => {
+    const baseCount = 500;
+    const launchDate = new Date("2026-03-01").getTime();
+    const now = Date.now();
+    const daysSinceLaunch = Math.max(0, Math.floor((now - launchDate) / (1000 * 60 * 60 * 24)));
+    return baseCount + daysSinceLaunch * 5;
+  });
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="mx-auto w-full max-w-md">
-        {/* Hero */}
-        <section className="bg-brand px-6 pt-8 pb-10 text-brand-foreground text-center animate-fade-in">
-          <div className="mx-auto inline-block rounded-md bg-white px-6 py-2 shadow-sm">
-            <span className="font-serif text-2xl font-bold tracking-tight text-brand">T·J·Maxx</span>
-          </div>
-          <h1 className="mt-6 font-serif text-4xl font-semibold leading-tight">
-            Up to 60% Off<br />Top Brands Today
-          </h1>
-          <p className="mt-3 text-sm text-brand-foreground/90">
-            Exclusive deals — refreshed daily, limited stock
-          </p>
-          <div className="mt-5 flex flex-wrap justify-center gap-2">
-            {["DESIGNER BRANDS", "FREE SHIPPING ELIGIBLE", "NO MEMBERSHIP"].map((t) => (
-              <span key={t} className="rounded-full border border-brand-foreground/40 px-4 py-1.5 text-[11px] font-bold tracking-wide">
-                {t}
-              </span>
-            ))}
-          </div>
-        </section>
+    <div className="flex min-h-screen flex-col bg-background">
+      {/* Hero banner with food background */}
+      <div className="relative h-52 w-full overflow-hidden animate-fade-in">
+        <img
+          src={foodBg}
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background" />
+        <div className="absolute left-4 top-4 flex items-center gap-2.5">
+          <img src={justeatLogo} alt="Ticketmaster" className="h-9 w-9 rounded-lg" />
+          <span className="text-lg font-bold text-primary-foreground tracking-wide">Ticketmaster</span>
+        </div>
+      </div>
 
-        {/* Live browsing bar */}
-        <div className="bg-accent-yellow px-4 py-3 text-center text-sm font-bold text-foreground flex items-center justify-center gap-2">
-          <span className="inline-block h-2 w-2 rounded-full bg-brand animate-pulse" />
-          {browsing} people are browsing these deals right now
+      {/* Content */}
+      <main className="mx-auto flex w-full max-w-lg flex-col items-center px-5 py-8 animate-slide-up">
+        <h1 className="mb-1.5 text-center text-2xl sm:text-3xl font-extrabold leading-tight text-foreground">
+          Claim Your Ticketmaster{"\n"}Student Reward
+        </h1>
+        <p className="mb-4 text-center text-sm text-muted-foreground">
+          Available in US, UK, AU & CA
+        </p>
+
+        {/* Social Proof */}
+        <div className="mb-5 flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(142, 71%, 45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span className="text-sm font-bold text-foreground">{approvedCount.toLocaleString()}+ Students Approved This Month</span>
         </div>
 
-        {/* Deals */}
-        <section className="px-5 pt-6 pb-4">
-          <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-            Today's Top Picks
+        {/* Divider */}
+        <div className="mb-6 h-1 w-12 rounded-full bg-primary" />
+
+        <h2 className="mb-1 text-center text-sm font-bold uppercase tracking-widest text-foreground">
+          How To Qualify
+        </h2>
+        <p className="mb-5 text-center text-xs text-muted-foreground">
+          Takes ~5–10 minutes
+        </p>
+
+        <div className="flex w-full flex-col gap-3 mb-6">
+          {steps.map((step, i) => (
+            <div key={step.number} className="animate-fade-in-step" style={{ animationDelay: `${i * 60}ms` }}>
+              <StepCard number={step.number} text={step.text} />
+            </div>
+          ))}
+        </div>
+
+        <a
+          href={OFFER_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full rounded-2xl bg-primary py-4 text-center text-base font-bold uppercase tracking-wide text-primary-foreground shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
+        >
+          Apply Now
+        </a>
+
+        {/* FAQ Section */}
+        <div className="mt-10 w-full animate-fade-in" style={{ animationDelay: "300ms" }}>
+          <h2 className="mb-3 text-center text-sm font-bold uppercase tracking-widest text-foreground">
+            Frequently Asked Questions
           </h2>
-          <div className="flex flex-col gap-3">
-            {deals.map((d, i) => (
-              <div
-                key={d.title}
-                className="flex items-center gap-4 rounded-2xl bg-card-dark p-3 text-card-dark-foreground animate-fade-in-step"
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-pink-50 text-2xl">
-                  {d.emoji}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-bold text-base">{d.title}</div>
-                  <div className="text-xs text-card-dark-foreground/60 line-through">Was {d.was}</div>
-                  <div className="text-lg font-extrabold text-brand">{d.now}</div>
-                </div>
-                <div className="rounded-full bg-pink-50 px-3 py-1 text-xs font-bold text-brand">
-                  {d.off}
-                </div>
-              </div>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`}>
+                <AccordionTrigger className="text-sm font-medium text-left">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
-        </section>
+          </Accordion>
+        </div>
 
-        {/* CTA */}
-        <section className="px-5 pt-4 pb-8">
-          <a
-            href={OFFER_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full rounded-2xl bg-brand py-5 text-center text-lg font-bold text-brand-foreground shadow-lg transition-transform hover:brightness-110 active:scale-[0.98]"
-          >
-            Claim My Deals Now →
-          </a>
-          <p className="mt-3 text-center text-sm text-muted-foreground">
-            Free to access · No credit card required
+        {/* Footer */}
+        <div className="mt-8 flex flex-col items-center gap-2">
+          <div className="flex items-center gap-2">
+            <img src={justeatLogo} alt="Ticketmaster" className="h-7 w-7 rounded-md" />
+            <span className="text-base font-bold text-muted-foreground">Ticketmaster</span>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Powered by Ticketmaster
           </p>
-
-          <div className="mt-6 flex justify-center gap-6 border-t pt-5 text-sm text-muted-foreground">
-            {["Verified deals", "Secure link", "Updated daily"].map((t) => (
-              <span key={t} className="flex items-center gap-1.5">
-                <span className="text-green-600 font-bold">✓</span> {t}
-              </span>
-            ))}
-          </div>
-        </section>
+        </div>
       </main>
     </div>
   );
