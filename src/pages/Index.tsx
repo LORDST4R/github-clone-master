@@ -60,7 +60,7 @@ const Index = () => {
       {/* Content */}
       <main className="mx-auto flex w-full max-w-lg flex-col items-center px-5 py-8 animate-slide-up">
         <h1 className="mb-1.5 text-center text-2xl sm:text-3xl font-extrabold leading-tight text-foreground">
-          Claim Your TJ Maxx{"\n"}Student Reward
+          Claim Your TJ Maxx{"\n"}Rewards Offer
         </h1>
         <p className="mb-4 text-center text-sm text-muted-foreground">
           Available in US, UK, AU & CA
@@ -69,7 +69,7 @@ const Index = () => {
         {/* Social Proof */}
         <div className="mb-5 flex items-center justify-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(142, 71%, 45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <span className="text-sm font-bold text-foreground">{approvedCount.toLocaleString()}+ Students Approved This Month</span>
+          <span className="text-sm font-bold text-foreground">{approvedCount.toLocaleString()}+ Shoppers Approved This Month</span>
         </div>
 
         {/* Divider */}
