@@ -119,10 +119,7 @@ const Index = () => {
 
         {/* Footer */}
         <div className="mt-8 flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2">
-            <img src={justeatLogo} alt="TJ Maxx" className="h-7 w-7 rounded-md" />
-            <span className="text-base font-bold text-muted-foreground">TJ Maxx</span>
-          </div>
+          <img src={justeatLogo} alt="TJ Maxx" className="h-8 w-auto" />
           <p className="text-xs text-muted-foreground">
             Powered by TJ Maxx
           </p>
